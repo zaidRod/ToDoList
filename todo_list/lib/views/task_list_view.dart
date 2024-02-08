@@ -63,6 +63,7 @@ class taskListView extends StatelessWidget {
                   ),
                   //Muestra el titulo de la tarea
                   title: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       MyImageWidget(imageUrl: AppViewModel.tasks[index].image),
                       Text(AppViewModel.taskTitle(index),

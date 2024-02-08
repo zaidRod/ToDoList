@@ -7,18 +7,32 @@ class MyImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.network(
-      imageUrl,
-      loadingBuilder: (context, child, progress) {
-        if (progress == null) {
-          return child;
-        }
-        return CircularProgressIndicator(); // Mostrar un indicador de carga mientras se carga la imagen
-      },
-      errorBuilder: (context, error, stackTrace) {
-        return Icon(Icons
-            .error); // Mostrar un icono de error si la carga de la imagen falla
-      },
+    return ClipOval(
+      child: Image.network(
+        imageUrl,
+        width: 80,
+        height: 80,
+        loadingBuilder: (context, child, progress) {
+          if (progress == null) {
+            return child;
+          }
+          return CircularProgressIndicator(); // Mostrar un indicador de carga mientras se carga la imagen
+        },
+        // Como la unica imagen que no cargo fue la de este campeon la inserto manualmente
+        errorBuilder: (context, error, stackTrace) {
+          return ClipOval(
+            child: Image.network(
+                "https://static.wikia.nocookie.net/lolesports_gamepedia_en/images/1/13/ApheliosSquare.png/revision/latest?cb=20200109121419",
+                width: 80,
+                height: 80, loadingBuilder: (context, child, progress) {
+              if (progress == null) {
+                return child;
+              }
+              return CircularProgressIndicator(); // Mostrar un indicador de carga mientras se carga la imagen
+            }),
+          ); // Mostrar un icono de error si la carga de la imagen falla
+        },
+      ),
     );
   }
 }
