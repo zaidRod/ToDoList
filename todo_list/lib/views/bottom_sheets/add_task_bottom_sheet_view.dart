@@ -30,8 +30,10 @@ class AddTaskBottomSheetView extends StatelessWidget {
                 //Envia la informacion escrita el textfield
                 onSubmitted: (value) {
                   //Si la caja de texto no esta vacia
+
+                  //NO ESTOY USANDO ESTA CLASE
                   if (entryController.text.isNotEmpty) {
-                    Task newTask = Task(entryController.text, false);
+                    Task newTask = Task(entryController.text, "//", false);
                     AppViewModel.addTask(newTask);
                     entryController.clear();
                   }

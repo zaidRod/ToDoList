@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_list/view_models/app_view_model.dart';
+import 'package:todo_list/views/fila_campeones.dart';
 
 class taskListView extends StatelessWidget {
   const taskListView({super.key});
@@ -22,6 +23,7 @@ class taskListView extends StatelessWidget {
           itemCount: AppViewModel.numTasks,
           // Es el elemento que se muestra en pantalla
           itemBuilder: (context, index) {
+            final mi = index;
             return Dismissible(
               background: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 5),
@@ -41,6 +43,7 @@ class taskListView extends StatelessWidget {
               onDismissed: (direction) {
                 AppViewModel.deleteTask(index);
               },
+
               child: Container(
                 decoration: BoxDecoration(
                     color: AppViewModel.clrlv1,
@@ -59,12 +62,17 @@ class taskListView extends StatelessWidget {
                     },
                   ),
                   //Muestra el titulo de la tarea
-                  title: Text(AppViewModel.taskTitle(index),
-                      style: TextStyle(
-                        color: AppViewModel.clrlv4,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w500,
-                      )),
+                  title: Row(
+                    children: [
+                      MyImageWidget(imageUrl: AppViewModel.tasks[index].image),
+                      Text(AppViewModel.taskTitle(index),
+                          style: TextStyle(
+                            color: AppViewModel.clrlv4,
+                            fontSize: 17,
+                            fontWeight: FontWeight.w500,
+                          )),
+                    ],
+                  ),
                 ),
               ),
             );

@@ -1,7 +1,7 @@
 class Task {
   String title;
-  //String image;
+  String image;
   bool complete;
 
-  Task(this.title, this.complete);
+  Task(this.title, this.image, this.complete);
 }

@@ -50,9 +50,9 @@ class AppViewModel extends ChangeNotifier {
   }
 
   //funcion que retorna la url de la imagen
-  // String taskImage(int taskIndex) {
-  //return tasks[taskIndex].image;
-  //}
+  String taskImage(int taskIndex) {
+    return tasks[taskIndex].image;
+  }
 
   //funcion que actualiza el nombre del usuario
   void updateUsername(String newUsername) {

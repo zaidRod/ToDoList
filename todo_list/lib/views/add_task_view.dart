@@ -25,7 +25,8 @@ class AddTaskView extends StatelessWidget {
                 //Creo el listado de campeones y los agrego al listado de tareas
                 List<Campeon> listado = await AppViewModel.getCampeones();
                 for (var i = 0; i < listado.length; i++) {
-                  AppViewModel.addTask(Task(listado[i].nombre, false));
+                  AppViewModel.addTask(
+                      Task(listado[i].nombre, listado[i].imagen, false));
                 }
 
                 /*
