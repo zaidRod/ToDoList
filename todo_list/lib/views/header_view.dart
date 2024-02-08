@@ -26,7 +26,7 @@ class HeaderView extends StatelessWidget {
                         child: FittedBox(
                           fit: BoxFit.fitHeight,
                           child: Text(
-                            "Bienvenido invocador",
+                            "Bienvenido, ",
                             style: TextStyle(
                                 fontSize: 23,
                                 fontWeight: FontWeight.w300,
