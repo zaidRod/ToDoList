@@ -7,11 +7,13 @@ class MyImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Recorto de forma ovalada
     return ClipOval(
       child: Image.network(
         imageUrl,
         width: 80,
         height: 80,
+
         loadingBuilder: (context, child, progress) {
           if (progress == null) {
             return child;
