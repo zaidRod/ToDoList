@@ -66,12 +66,17 @@ class taskListView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       MyImageWidget(imageUrl: AppViewModel.tasks[index].image),
-                      Text(AppViewModel.taskTitle(index),
-                          style: TextStyle(
-                            color: AppViewModel.clrlv4,
-                            fontSize: 19,
-                            fontWeight: FontWeight.w400,
-                          )),
+                      Column(
+                        children: [
+                          Text(AppViewModel.taskTitle(index),
+                              style: TextStyle(
+                                color: AppViewModel.clrlv4,
+                                fontSize: 19,
+                                fontWeight: FontWeight.w400,
+                              )),
+                          Text(AppViewModel.tasks[index].origen),
+                        ],
+                      ),
                     ],
                   ),
                 ),

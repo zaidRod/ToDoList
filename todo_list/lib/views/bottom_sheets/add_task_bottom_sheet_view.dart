@@ -33,7 +33,7 @@ class AddTaskBottomSheetView extends StatelessWidget {
 
                   //NO ESTOY USANDO ESTA CLASE
                   if (entryController.text.isNotEmpty) {
-                    Task newTask = Task(entryController.text, "//", false);
+                    Task newTask = Task(entryController.text, "//", "", false);
                     AppViewModel.addTask(newTask);
                     entryController.clear();
                   }

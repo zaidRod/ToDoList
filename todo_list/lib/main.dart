@@ -21,7 +21,6 @@ class _MainAppState extends State<MainApp> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    AppViewModel().carga();
 
     //Asigno a la variable el listado de los campeones
     //AppViewModel().getCampeones();

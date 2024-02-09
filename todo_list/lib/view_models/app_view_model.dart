@@ -111,24 +111,17 @@ class AppViewModel extends ChangeNotifier {
       List<Campeon> campeones = [];
       //Cargo la lista de campeones
       for (var i = 0; i < 20; i++) {
-        campeones.add(Campeon(jsonData[i]["champion"], jsonData[i]["img"]));
+        campeones.add(Campeon(jsonData[i]["champion"], jsonData[i]["img"],
+            jsonData[i]["origen"]));
       }
       //Los imprimo
       for (var i = 0; i < 20; i++) {
-        print(campeones[i].nombre + campeones[i].imagen);
+        print(campeones[i].origen);
       }
       // Retorno el listado de los campeones
       return campeones;
     } else {
       throw Exception("Problema de conexión");
     }
-  }
-
-  void carga() async {
-    List<Campeon> listado = await getCampeones();
-    for (var i = 0; i < listado.length; i++) {
-      addTask(Task(listado[i].nombre, listado[i].imagen, false));
-    }
-    notifyListeners();
   }
 }
