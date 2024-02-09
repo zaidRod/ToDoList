@@ -14,32 +14,35 @@ class AddTaskView extends StatelessWidget {
         return SizedBox(
           height: 60,
           child: ElevatedButton(
+              autofocus: true,
               style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
-                  foregroundColor: Colors.black,
+                  backgroundColor: AppViewModel.clrlv3,
+                  foregroundColor: AppViewModel.clrlv2,
+                  elevation: 5,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20))),
+                      borderRadius: BorderRadius.circular(10))),
 
               //Defino la funcion del boton
               onPressed: () async {
-                //Creo el listado de campeones y los agrego al listado de tareas
-                List<Campeon> listado = await AppViewModel.getCampeones();
-                for (var i = 0; i < listado.length; i++) {
-                  AppViewModel.addTask(
-                      Task(listado[i].nombre, listado[i].imagen, false));
-                }
-
-                /*
-                // Al presionarlo llamo a la funcio que construye el contenedor inferior
-                AppViewModel().bottomSheetBuilder(
-                    //Llamo a la clse add task para que retorne el contenedor que ya tiene creado
-                    const AddTaskBottomSheetView(),
-                    context);
-                    */
+                if (AppViewModel.borrado == false) {
+                  //Creo el listado de campeones y los agrego al listado de tareas
+                  List<Campeon> listado = await AppViewModel.getCampeones();
+                  for (var i = 0; i < listado.length; i++) {
+                    AppViewModel.addTask(
+                        Task(listado[i].nombre, listado[i].imagen, false));
+                  }
+                  AppViewModel.borrado = true;
+                } else {}
               },
-              child: const Icon(
-                Icons.add,
-                size: 30,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.refresh,
+                    size: 25,
+                  ),
+                  Text("Cargar info")
+                ],
               )),
         );
       },

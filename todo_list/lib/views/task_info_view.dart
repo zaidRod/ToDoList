@@ -41,7 +41,7 @@ class TaskInfoView extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.topCenter,
                         child: FittedBox(
-                          child: Text("Total de tareas",
+                          child: Text("Total de campeones",
                               style: TextStyle(
                                   color: AppViewModel.clrlv4,
                                   fontWeight: FontWeight.w600)),
@@ -82,7 +82,7 @@ class TaskInfoView extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.topCenter,
                         child: FittedBox(
-                          child: Text("Total de pendientes",
+                          child: Text("Maestrias pendientes",
                               style: TextStyle(
                                   color: AppViewModel.clrlv4,
                                   fontWeight: FontWeight.w600)),

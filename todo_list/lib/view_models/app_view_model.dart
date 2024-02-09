@@ -9,8 +9,11 @@ import '../models/user_model.dart';
 class AppViewModel extends ChangeNotifier {
   //Creo el listado de tareas
   List<Task> tasks = <Task>[];
+
+  //
+  bool borrado = false;
   //Creo el usuario
-  User user = User("Zaid");
+  User user = User("Invocador");
 
   Color clrlv1 = Colors.grey.shade50;
   Color clrlv2 = Colors.grey.shade200;
@@ -92,6 +95,7 @@ class AppViewModel extends ChangeNotifier {
   }
 
 // Creo el metodo que carga la lista de todos los campeones
+
   Future<List<Campeon>> getCampeones() async {
     var url = Uri.parse(
         "https://league-of-legends-champions.onrender.com/App/Champions");
@@ -113,11 +117,18 @@ class AppViewModel extends ChangeNotifier {
       for (var i = 0; i < 20; i++) {
         print(campeones[i].nombre + campeones[i].imagen);
       }
-
       // Retorno el listado de los campeones
       return campeones;
     } else {
       throw Exception("Problema de conexión");
     }
+  }
+
+  void carga() async {
+    List<Campeon> listado = await getCampeones();
+    for (var i = 0; i < listado.length; i++) {
+      addTask(Task(listado[i].nombre, listado[i].imagen, false));
+    }
+    notifyListeners();
   }
 }

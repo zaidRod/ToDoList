@@ -69,8 +69,8 @@ class taskListView extends StatelessWidget {
                       Text(AppViewModel.taskTitle(index),
                           style: TextStyle(
                             color: AppViewModel.clrlv4,
-                            fontSize: 17,
-                            fontWeight: FontWeight.w500,
+                            fontSize: 19,
+                            fontWeight: FontWeight.w400,
                           )),
                     ],
                   ),

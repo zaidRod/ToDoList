@@ -21,6 +21,8 @@ class DeleteBottomSheetView extends StatelessWidget {
                     AppViewModel.deleteAllTasks();
                     //Oculta el cuadro de texto con las opciones
                     Navigator.of(context).pop();
+                    //reinico el listado par que se pueda cargar
+                    AppViewModel.borrado = false;
                   },
                   style: ElevatedButton.styleFrom(
                       foregroundColor: AppViewModel.clrlv1,
