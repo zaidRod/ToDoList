@@ -11,7 +11,7 @@ class taskListView extends StatelessWidget {
     return Consumer<AppViewModel>(builder: (context, AppViewModel, child) {
       return Container(
         decoration: BoxDecoration(
-            color: AppViewModel.clrlv2,
+            color: Colors.grey.shade400,
             borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
         child: ListView.separated(
           padding: EdgeInsets.all(15),
@@ -66,6 +66,8 @@ class taskListView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       MyImageWidget(imageUrl: AppViewModel.tasks[index].image),
+                      //MyImageWidget(
+                      //  imageUrl: AppViewModel.tasks[index].posicion),
                       Column(
                         children: [
                           Text(AppViewModel.taskTitle(index),
@@ -74,7 +76,13 @@ class taskListView extends StatelessWidget {
                                 fontSize: 19,
                                 fontWeight: FontWeight.w400,
                               )),
-                          Text(AppViewModel.tasks[index].origen),
+                          Text(
+                            "Origen: " + AppViewModel.tasks[index].origen,
+                            style: TextStyle(
+                                color: AppViewModel.clrlv4,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w300),
+                          ),
                         ],
                       ),
                     ],

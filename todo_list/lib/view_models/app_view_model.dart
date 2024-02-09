@@ -112,11 +112,11 @@ class AppViewModel extends ChangeNotifier {
       //Cargo la lista de campeones
       for (var i = 0; i < 20; i++) {
         campeones.add(Campeon(jsonData[i]["champion"], jsonData[i]["img"],
-            jsonData[i]["origen"]));
+            jsonData[i]["origen"], jsonData[i]["position"][0]["icon"]));
       }
       //Los imprimo
       for (var i = 0; i < 20; i++) {
-        print(campeones[i].origen);
+        print(campeones[i].posicion);
       }
       // Retorno el listado de los campeones
       return campeones;
