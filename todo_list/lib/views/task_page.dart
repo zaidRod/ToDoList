@@ -9,21 +9,20 @@ class TaskPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
         body: SafeArea(
           bottom: false,
           child: Column(
             children: [
               //Cabecera
               Expanded(flex: 1, child: HeaderView()),
-              //Info tarea
-
+              //Info tareaf
               Expanded(flex: 1, child: TaskInfoView()),
               //Listado de tareas
               Expanded(flex: 7, child: taskListView()),
             ],
           ),
         ),
-        floatingActionButton: const AddTaskView());
+        floatingActionButton: AddTaskView());
   }
 }

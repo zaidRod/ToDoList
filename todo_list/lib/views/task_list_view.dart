@@ -9,90 +9,95 @@ class taskListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<AppViewModel>(builder: (context, AppViewModel, child) {
-      return Container(
-        decoration: BoxDecoration(
-            color: Colors.grey.shade400,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
-        child: ListView.separated(
-          padding: EdgeInsets.all(15),
-          //Es el pequeño espacio entre cada tarea
-          separatorBuilder: (context, index) {
-            return SizedBox(height: 15);
-          },
-          //la cantidad de tareas creadas
-          itemCount: AppViewModel.numTasks,
-          // Es el elemento que se muestra en pantalla
-          itemBuilder: (context, index) {
-            final mi = index;
-            return Dismissible(
-              background: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 5),
-                decoration: BoxDecoration(
-                    color: Colors.red.shade300,
-                    borderRadius: BorderRadius.circular(10)),
-                child: Center(
-                  child: Icon(
-                    Icons.delete,
-                    size: 40,
-                    color: Colors.red.shade700,
-                  ),
-                ),
-              ),
-              key: UniqueKey(),
-              //Cuando deslizo se borra del listado
-              onDismissed: (direction) {
-                AppViewModel.deleteTask(index);
-              },
-
-              child: Container(
-                decoration: BoxDecoration(
-                    color: AppViewModel.clrlv1,
-                    borderRadius: BorderRadius.circular(20)),
-                child: ListTile(
-                  leading: Checkbox(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5)),
-                    side: BorderSide(width: 2, color: AppViewModel.clrlv3),
-                    checkColor: AppViewModel.clrlv1,
-                    activeColor: AppViewModel.clrlv3,
-                    //verifico el estaod de la tarea
-                    value: AppViewModel.getTaskValue(index),
-                    onChanged: (value) {
-                      AppViewModel.setTaskValue(index, value!);
-                    },
-                  ),
-                  //Muestra el titulo de la tarea
-                  title: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      MyImageWidget(imageUrl: AppViewModel.tasks[index].image),
-                      //MyImageWidget(
-                      //  imageUrl: AppViewModel.tasks[index].posicion),
-                      Column(
-                        children: [
-                          Text(AppViewModel.taskTitle(index),
-                              style: TextStyle(
-                                color: AppViewModel.clrlv4,
-                                fontSize: 19,
-                                fontWeight: FontWeight.w400,
-                              )),
-                          Text(
-                            "Origen: " + AppViewModel.tasks[index].origen,
-                            style: TextStyle(
-                                color: AppViewModel.clrlv4,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w300),
-                          ),
-                        ],
+      return AppViewModel.cargando && AppViewModel.presionado
+          ? Center(
+              child: CircularProgressIndicator(), // Indicador de carga
+            )
+          : Container(
+              decoration: BoxDecoration(
+                  color: Colors.grey.shade400,
+                  borderRadius:
+                      BorderRadius.vertical(top: Radius.circular(30))),
+              child: ListView.separated(
+                padding: EdgeInsets.all(15),
+                //Es el pequeño espacio entre cada tarea
+                separatorBuilder: (context, index) {
+                  return SizedBox(height: 15);
+                },
+                //la cantidad de tareas creadas
+                itemCount: AppViewModel.numTasks,
+                // Es el elemento que se muestra en pantalla
+                itemBuilder: (context, index) {
+                  final mi = index;
+                  return Dismissible(
+                    background: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 5),
+                      decoration: BoxDecoration(
+                          color: Colors.red.shade300,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Center(
+                        child: Icon(
+                          Icons.delete,
+                          size: 40,
+                          color: Colors.red.shade700,
+                        ),
                       ),
-                    ],
-                  ),
-                ),
+                    ),
+                    key: UniqueKey(),
+                    //Cuando deslizo se borra del listado
+                    onDismissed: (direction) {
+                      AppViewModel.deleteTask(index);
+                    },
+
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: AppViewModel.clrlv1,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: ListTile(
+                        leading: Checkbox(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5)),
+                          side:
+                              BorderSide(width: 2, color: AppViewModel.clrlv3),
+                          checkColor: AppViewModel.clrlv1,
+                          activeColor: AppViewModel.clrlv3,
+                          //verifico el estaod de la tarea
+                          value: AppViewModel.getTaskValue(index),
+                          onChanged: (value) {
+                            AppViewModel.setTaskValue(index, value!);
+                          },
+                        ),
+                        //Muestra el titulo de la tarea y la imagen
+                        title: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            MyImageWidget(
+                                imageUrl: AppViewModel.tasks[index].image),
+                            Column(
+                              children: [
+                                Text(AppViewModel.taskTitle(index),
+                                    style: TextStyle(
+                                      color: AppViewModel.clrlv4,
+                                      fontSize: 19,
+                                      fontWeight: FontWeight.w400,
+                                    )),
+                                Text(
+                                  "Origen: " + AppViewModel.tasks[index].origen,
+                                  style: TextStyle(
+                                      color: AppViewModel.clrlv4,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w300),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
               ),
             );
-          },
-        ),
-      );
     });
   }
 }

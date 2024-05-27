@@ -36,9 +36,11 @@ class AddTaskView extends StatelessWidget {
                         false));
                   }
                   AppViewModel.borrado = true;
+                  AppViewModel.cargando = false;
                 } else {}
+                AppViewModel.presionado = true;
               },
-              child: Column(
+              child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(

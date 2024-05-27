@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:todo_list/models/campeones.dart';
 import 'package:http/http.dart' as http;
@@ -10,8 +9,12 @@ class AppViewModel extends ChangeNotifier {
   //Creo el listado de tareas
   List<Task> tasks = <Task>[];
 
-  //
+  //evito que se cargen dos veces los datos
   bool borrado = false;
+//Verifico que se estan cargado los datos
+  bool cargando = true;
+  //Verifico que se ha presionado el boton
+  bool presionado = false;
   //Creo el usuario
   User user = User("Invocador");
 
