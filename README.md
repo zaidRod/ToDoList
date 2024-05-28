@@ -1,4 +1,3 @@
-#To do list
 # Overview
 This project is a task list application developed using Flutter, designed to feature champions from the popular video game League of Legends. The app fetches data from a RESTful API to ensure that the champion information is always up-to-date.
 
